@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table{
+                border: solid black;
+                margin-left: 400px;
+                margin-top: 150px;
+            }
+
+            td,th{
+                height: 50px;
+                padding: 10px;
+            }
+            input , select{
+                text-align: right;
+            }
+            input ,button , select{
+                height: 100%;
+                width: 100%;
+            }
+            button.select{
+                display: none;
+            }
+
+
+        </style>
+        <script>
+            var val1=1
+            var val2=1
+            var d={'usd':100}
+            function find(){
+                var c1=document.getElementById('1').value;
+                var c2=document.getElementById('2').value;
+                if (c1=='' || c1==0){
+                    if(c2=='' || c2==0){
+                        document.getElementById('1').value=0;
+                        document.getElementById('2').value=0;
+                    }
+                    else {
+                        document.getElementById('1').value=c2*val2/val1;
+                    }
+                }
+                else{
+                    document.getElementById('2').value=c1*val1/val2;
+                }
+            }
+            function set1(){
+                val1=document.getElementById('m1').value;
+            }
+            function set2(){
+                val2=document.getElementById('m2').value;
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>value</th>
+                <th>currency of country</th>
+            </tr>
+            <tr>
+                <td> <input type="text" id= "1" value="" > </td>
+                <td> 
+                    <select id="m1" onchange="set1()">
+                        <option value=1  > india</option>
+                        <option value=74.28 > usd</option>
+                        <option value=20.23 > United Arab Emirates Dirham</option>
+                        <option value=87.93 > euro</option>
+                        <option value=11.28 > chinese yuan </option>
+                        <option value=0.72 > japanese yen</option>
+                        <option value=51.18 > newzealand dollar</option>
+                        <option value=54.09 > australian dollar</option>
+                        <option value=98.13 > pound sterling </option>
+                        <option value=19.66 > poland </option>  
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <input type="text" id="2" value=""> </td>
+                <td> 
+                    <select id="m2" onchange="set2()">
+                        <option value=1 > india</option>
+                        <option value=74.28 > usd</option>
+                        <option value=20.23 > United Arab Emirates Dirham</option>
+                        <option value=87.93 > euro</option>
+                        <option value=11.28 > chinese yuan </option>
+                        <option value=0.72 > japanese yen</option>
+                        <option value=51.18 > newzealand dollar</option>
+                        <option value=54.09 > australian dollar</option>
+                        <option value=98.13 > pound sterling </option>
+                        <option value=19.66 > poland </option>  
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="find()">convert</button>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
