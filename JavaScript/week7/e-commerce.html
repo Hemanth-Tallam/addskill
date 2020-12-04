@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .menu-area{
+                width: 100%;
+                /* background-color: black; */
+            }
+            #nametag{
+                background-color: black;
+                font-size: large;
+                font-weight: bold;
+                width: 100px;
+                display: flex;
+                color: white;
+                text-align: center;
+                justify-content: center;
+                line-height: 60px;
+                height: 60px;
+            }
+            .menu-area a{
+                display: flex;
+                height: 60px;
+                align-items: center;
+                background-color: black;
+                color: white;
+                font-size: medium;
+                line-height: 60px;
+                justify-content: center;
+                text-decoration: none;
+            }
+            .menu-area a:hover{
+                background-color: gray;
+            }
+            .menu-area ul{
+                list-style: none;
+                display: flex;
+            }
+            .menu-area ul li{
+                width: 120px;
+                position: relative;
+                text-align: center;
+            }
+            .menu-area ul li:hover ul{
+                display: block;
+                text-align: center;
+                justify-content: center;
+                width:100%;
+                background-color: black;
+            }
+            .menu-area ul li ul{
+                display: none;
+            }
+            .menu-area ul li input{
+                margin-left: 80px;
+                display: flex;
+                height: 40px;
+                justify-content: center;
+                margin-top: 10px;
+                width:400px;
+                background-color:white;
+                padding: 10px;
+                font-size: large;
+            }
+            div table{
+                border-spacing: 10px;    
+            }
+            div table tr{
+                width:1230px;
+            }
+            div table tr td img{
+                width:300px;
+            }
+            div table tr td {
+                border-collapse: separate;
+                background-color: gray;
+                padding: 10px;
+                margin: 100px;
+                width: 300px;
+            }
+            div table tr td:hover{
+                background-color: black;
+            }
+            div table tr td div button{
+                height: 40px; 
+                margin-left: 100px;
+            }
+            /* div table tr td:hover div button{
+                background-color: black;
+            } */
+            h1,h3{
+                text-align: center;
+            }
+            #manadhe{
+                width: 600px;
+                height: 30px;
+                float: left;
+                margin-left: 350px;
+                margin-right: 20px;
+                font-size: medium;
+            }
+            button{
+                height: 35px;
+                width:100px
+            }
+            button:hover{
+                background-color: skyblue;
+            }
+            .pricing{
+                border: 1px solid black;
+                width: 200px;
+                margin: 10px;
+            }
+            .co{
+                text-align: right;
+            }
+            .gone{
+                display: none;
+            } 
+        </style>
+    </head>
+    <body>
+        <div class="menu-area">
+            <ul>
+                <li id="nametag" >F & V</li>
+                <li id="nametag" style="font-size: medium; font-weight: 500; color: white;"><a href="#" onclick="onn()" style="width: 100%;">Home</a></li>
+                <li> <a href="#"> Products </a>
+                    <ul>
+                        <li><a href="#" onclick="fruitsonly()">Fruits</a></li>
+                        <li><a href="#" onclick="vegeonly()">Vegetables</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Deals</a>
+                    <ul>
+                        <li><a href="#">10%Off </a></li>
+                        <li><a href="#">5%off </a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Stores</a>
+                    <ul>
+                        <li><a href="#">Hyderabad</a></li>
+                        <li><a href="#">Bangalore</a></li>
+                    </ul>                
+                </li>
+                <li><a href="#">contacts</a>
+                    <ul>
+                        <li><a href="#">9696986789</a></li>
+                        <li><a href="#">hemanth@hemu.com</a>
+                        </li>
+                    </ul>
+                </li>                
+                <li id="nametag" style="font-size: medium; font-weight: 500; color: white; width: 120px;"><a href="#billing" style="width: 100%;">Cart</a></li>
+                <li style="height: 60px; background-color: black; width: 600px;">
+                    <input id="sear" placeholder="search for.." type="text" value="" onkeyup="myfunc()" >
+                </li>
+            </ul>
+        </div>
+        <div id="frts">
+            <h1> fruits </h1>
+            <table class="fruits" id="fru">
+                <tr> 
+                    <td value="mango"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="mango">mango</button>
+                        </div>
+                    </td>
+                    <td value="apple"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="apple">apple</button>
+                        </div>
+                    </td>
+                    <td value="banana"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="banana">banana</button>
+                        </div>
+                    </td>
+                    <td value="sapota"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="sapota">sapota</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td value="kiwi"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="kiwi">kiwi</button>
+                        </div>
+                    </td>
+                    <td "pine apple"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="pine apple">pine apple</button>
+                        </div>
+                    </td>
+                    <td value="promganate"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="promganate">promganate</button>
+                        </div>
+                    </td>
+                    <td value="orange"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="orange">orange</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td value="mosambi"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="mosambi">mosambi</button>
+                        </div>
+                    </td>
+                    <td value="dragon fruit"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="dragon fruit">dragon fruit</button>
+                        </div>
+                    </td>
+                    <td value="avacada"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="avacada">avacada</button>
+                        </div>
+                    </td>
+                    <td value="custard apple"> 
+                        <img src="image.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="custard apple">custard apple</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="vege">
+            <h1>
+                vegetables
+            </h1>
+            <table class="vegetables" id="veg">
+                <tr>
+                    <td value="tomato"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="tomato" >tomato</button>
+                        </div>
+                    </td> 
+                    <td value="potato"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="potato">potato</button>
+                        </div>
+                    </td> 
+                    <td value="cauli flower"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="cauli flower">cauli flower</button>
+                        </div>
+                    </td> 
+                    <td value="carrot"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="carrot">carrot</button>
+                        </div>
+                    </td> 
+                </tr>
+                <tr>
+                    <td value="beans"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="beans">beans</button>
+                        </div>
+                    </td> 
+                    <td value="drum stick"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="drum stick">drum stick</button>
+                        </div>
+                    </td> 
+                    <td value="brinjal"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="brinjal">brinjal</button>
+                        </div>
+                    </td> 
+                    <td value="capsicum"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="capsicum">capsicum</button>
+                        </div>
+                    </td> 
+                </tr>
+                <tr>
+                    <td value="onion"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="onion">onion</button>
+                        </div>
+                    </td> 
+                    <td value="lemon"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="lemon">lemon</button>
+                        </div>
+                    </td> 
+                    <td value="lady finger"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="lady finger">lady finger</button>
+                        </div>
+                    </td> 
+                    <td value="bitter guard"> 
+                        <img src="vegetables.jpg" height="250px">
+                        <div>
+                            <button type="button" onclick="adding(value)" value="bitter guard">bitter guard</button>
+                        </div>
+                    </td> 
+                </tr>
+            </table>
+        </div>    
+        <br>
+        <h3>E-mail id</h3>
+        <input type="text" id="manadhe" value="">
+        <button type="button" onclick="check()" > submit</button>
+        <br>
+        <br>
+        <h4>Total Cost for selected items</h4>
+        <div id="billing">
+            <table class="pricing" style="width: 350px; justify-content: center; align-items: center;">
+                <tr id="r0">
+                    <th width="250px" >item</th>
+                    <th width="50px">price</th>
+                </tr>
+                <tr>
+                    <td>total</td>
+                    <td id="tot" class="co"> </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script>
+        var costs={ "mango":"20" ,"apple":"40", "banana":"10" , "sapota" :"25",
+                    "kiwi":"55" , "pine apple": "70", "promganate":"45" ,"orange": "15",
+                    "mosambi": "10","dragon fruit":"80" ,"avacada":"75","custard apple":"30",
+                    "tomato":"50","potato":"30","cauli flower":"25","carrot":"15",
+                    "beans":"28","drum stick":"8","brinjal":"23","capsicum":"50",
+                    "onion":"80","lemon":"3","lady finger":"32","bitter guard":"22"}
+        var selected=new Array();
+        var num=0
+        var tc=0
+        document.getElementById("tot").innerHTML=tc
+        function myfunc(){
+            var ip,fltr,tbl1,tbl2,tr1,tr2,td,i,txtV,j;
+            ip = document.getElementById("sear").value;
+            fltr = ip.toUpperCase();
+            tbl1 = document.getElementById("fru")
+            tbl2 = document.getElementById("veg")
+            tr1 = tbl1.getElementsByTagName("tr");
+            tr2 = tbl2.getElementsByTagName("tr")
+            for(i=0;i<tr1.length;i++){
+                td=tr1[i].getElementsByTagName("td");
+                for (j=0;j<td.length;j++){
+                    if (td[j]){
+                        txtV=td[j].textContent || td[j].innerHTML
+                        if(txtV.toUpperCase().indexOf(fltr)>-1){
+                            td[j].style.display="";
+                        }else{
+                            td[j].style.display ="none";
+                        }
+                    }
+                }
+            }
+            for(i=0;i<tr2.length;i++){
+                td=tr2[i].getElementsByTagName("td");
+                for (j=0;j<td.length;j++){
+                    if (td[j]){
+                        txtV=td[j].textContent || td[j].innerHTML
+                        if(txtV.toUpperCase().indexOf(fltr)>-1){
+                            td[j].style.display="";
+                        }else{
+                            td[j].style.display ="none";
+                        }
+                    }
+                }
+            }
+        }
+        function onn(){
+            document.getElementById("frts").className=""
+            document.getElementById("vege").className=""
+        }
+        function fruitsonly(){
+            document.getElementById("frts").className=""
+            document.getElementById("vege").classList.add("gone")
+        }
+        function vegeonly(){
+            document.getElementById("vege").className=""
+            document.getElementById("frts").classList.add("gone")
+        }
+        function adding(e){
+            let a= confirm("add"+" "+e+" and cost is "+costs[e]+" at offer of 10% : "+(parseInt(costs[e])*0.9))
+            if (a){
+                let tr1=document.createElement("tr")
+                let td1=document.createElement("td")
+                let td2=document.createElement("td")
+                let td1text=document.createTextNode(e)
+                let td2text=document.createTextNode(parseInt(costs[e])*0.9)
+                td1.append(td1text)
+                td2.append(td2text)
+                td2.classList.add("co")
+                tr1.append(td1)
+                tr1.append(td2)
+                tc=tc+parseInt(costs[e])*0.9
+                selected.push(e)
+                document.getElementById("r"+num).after(tr1)
+                document.getElementById("tot").innerHTML=tc
+                num=num+1
+                tr1.id="r"+num
+            }
+        } 
+        function check(){
+            var a=document.getElementById("manadhe").value
+            if (a.includes("@")){
+                document.getElementById("manadhe").style.border="1px solid green"
+            }
+            else{
+                alert("invalid mail id")
+                document.getElementById("manadhe").style.border="3px solid red"
+            }
+        }
+    </script>
+</html>
