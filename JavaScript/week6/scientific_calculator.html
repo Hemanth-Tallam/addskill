@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table{
+                width: 50%;
+                table-layout: auto;
+                border: 1px solid black;
+            }
+            td{
+                width: 50px;
+                text-align: center;
+                height: 50px;
+            }
+            button{
+                width: 100%;
+                height: 100%;
+                font-size: larger;
+                font-weight: bold;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            input{
+                width: 98%;
+                height: 100%;  
+                text-align: right;
+                font-size: larger;
+                font-weight: bold;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;            
+           }
+
+        </style>
+        <script>
+            function set(op){
+
+                document.getElementById("ans").value +=op;
+                /*alert( document.getElementById("ans").value );*/
+            }
+            function clearing(){
+                document.getElementById("ans").value=null;
+                /*document.getElementById("ans").value="";*/
+            }
+            function ans(){
+                var an= document.getElementById("ans").value;
+                document.getElementById("ans").value=eval(an);
+                /*document.getElementById("ans").value=bn;
+                alert(bn)*/
+            }
+            function fact(){
+                var fa=document.getElementById("ans").value;
+                var ba=eval(fa);
+                for (let i=ba-1;i>1;i--){
+                    ba*=i;
+                }
+                /*alert(ba)*/
+                document.getElementById("ans").value=ba;
+            }
+            function sqr(){
+                var sa=document.getElementById("ans").value;
+                var sba=eval(sa);
+                document.getElementById("ans").value=Math.sqrt(sba);
+            }
+            function cub(){
+                var ca=document.getElementById("ans").value;
+                var cba=eval(ca);
+                document.getElementById("ans").value=Math.cbrt(cba);
+            }
+            function sine(){
+                var sca=document.getElementById("ans").value;
+                var scba=eval(sca)*Math.PI/180;
+                document.getElementById("ans").value=Math.sin(scba);
+            }
+            function cosine(){
+                var cca=document.getElementById("ans").value;
+                var ccba=eval(cca)*Math.PI/180;
+                document.getElementById("ans").value=Math.cos(ccba);
+            }
+            function tant(){
+                var tca=document.getElementById("ans").value;
+                var tcba=eval(tca)*Math.PI/180;
+                document.getElementById("ans").value=Math.tan(tcba);
+            }
+            function logarthmic(){
+                var lca=document.getElementById("ans").value;
+                var lcba=eval(lca);
+                document.getElementById("ans").value=Math.log10(lcba);
+            }
+            function epower(){
+                var eca=document.getElementById("ans").value;
+                var ecba=eval(eca);
+                document.getElementById("ans").value=Math.exp(ecba);
+            }
+            function pie(){
+                if (document.getElementById("ans").value==" "){
+                    document.getElementById("ans").value=Math.PI;
+                }
+                else{
+                    document.getElementById("ans").value +='*3.14159';
+                }
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <p id="main" style="text-align: center; width: 50%; font-size: larger; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">SCIENTIFIC CALCULATOR</p>
+        <table>
+            <tr>
+                <td> <button type="button" onclick="set('**')"> ** </button> </td>
+                <td colspan="3" > <input type="text" id="ans" value=" " />  </td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="sqr()"> &#8730 </button> </td>
+                <td> <button type="button" onclick="cub()"> &#8731 </button> </td>
+                <td> <button type="button" onclick="set('(')"> ( </button> </td>
+                <td> <button type="button" onclick="set(')')"> ) </button> </td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="sine()"> sin </button> </td>
+                <td> <button type="button" onclick="cosine()"> cos </button> </td>
+                <td> <button type="button" onclick="tant()"> tan </button> </td>
+                <td> <button type="button" onclick="logarthmic()"> log </button> </td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="set('+')"> + </button> </td>
+                <td> <button type="button" onclick="set('1')"> 1 </button> </td>
+                <td> <button type="button" onclick="set('2')"> 2 </button> </td>
+                <td> <button type="button" onclick="set('3')"> 3 </button> </td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="set('-')"> - </button> </td>
+                <td> <button type="button" onclick="set('4')"> 4 </button> </td>
+                <td> <button type="button" onclick="set('5')"> 5 </button> </td>
+                <td> <button type="button" onclick="set('6')"> 6 </button> </td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="set('*')"> * </button> </td>
+                <td> <button type="button" onclick="set('7')"> 7 </button> </td>
+                <td> <button type="button" onclick="set('8')"> 8 </button> </td>
+                <td> <button type="button" onclick="set('9')"> 9 </button> </td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="set('/')"> / </button> </td>
+                <td> <button type="button" onclick="set('0')"> 0 </button> </td>
+                <td> <button type="button" onclick="set('.')"> . </button> </td>
+                <td> <button type="button" onclick="fact()" > ! </button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="clearing()"> clear</button></td>
+                <td><button type="button" onclick="pie()"> π </button></td>
+                <td><button type="button" onclick="epower()"> e </button></td>
+                <td><button type="button" onclick="ans()"> Find Ans</button></td>
+            </tr>
+        </table>
+    </body>
+
+
+
+</html>
