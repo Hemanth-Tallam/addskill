@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .error{
+                color: red
+            }
+            .changed{
+                color: rgb(64, 204, 64);
+            }
+            div p span ul{
+                display: none;
+            }
+            div p span:hover ul , div p span:focus ul {
+                display: block;
+            }
+            div p span ul li{
+                list-style: none;
+            }
+            div{
+                width: 60%;
+                border: 1px solid black;
+            }
+
+        </style>
+        <script>
+            var ids=0
+            var wrong={}
+            var text=''
+            function getter(e){
+                let file=inputfile.files[0];
+                let reader=new FileReader();
+                reader.readAsText(file);
+                reader.onload= ()=>{
+                    text= reader.result;
+                    check()
+                    
+                }
+            }
+            function check(){
+                $.ajax({
+                    method:"GET",
+                    url: "https://api.textgears.com/spelling?key="+"kUmkZvdfcyhXdra0"+"&text="+text+"&language=en-GB",
+                    success:function(responseMessage,status,repose){
+                        for (word of repose.responseJSON.response.errors){
+                            wrong[word.bad]=word.better
+                        }
+                        proceed()
+                    },
+                    error:function(response){
+                        console.log(response)
+                    }
+                })
+            }
+            function proceed(){
+                let allwords=text.split(/([_\W])/)
+                let total= document.createElement("p")
+                for (let word of allwords){
+                    if (wrong[word]){
+                        ids+=1
+                        let e= document.createElement("span")
+                        let val=document.createTextNode(word)
+                        let div1=document.createElement("ul")
+                        e.classList="error"
+                        e.id=ids
+                        for (let better of wrong[word]){
+                            let l1 =document.createElement("li")
+                            let tex = document.createTextNode(better)
+                            l1.append(tex)
+                            l1.addEventListener("click",()=>{
+                                cid=l1.parentElement.parentElement.getAttribute("id")
+                                document.getElementById(cid).innerHTML=better
+                                document.getElementById(cid).classList="changed"
+                            })
+                            div1.append(l1)
+                        }
+                        e.append(val)
+                        e.append(div1)
+                        total.append(e)
+                    }
+                    else{
+                        let t=document.createTextNode(word)
+                        total.append(t)
+                    }
+                }
+                document.getElementById("textcontent").append(total)
+                console.log(total)
+            }
+        </script>
+    </head>
+    <body>
+        <input type="file" id="inputfile" onchange="getter(event)">
+        <div id="textcontent"></div>
+    </body>
+</html>
