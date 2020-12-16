@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            input{
+                padding: 10px;
+                margin: 10px;
+                width: 200px;
+                height: 30px;
+                font-size: large;
+            }
+            button{
+                margin: 10px;
+                height: 50px;
+                line-height: 30px;
+                font-size: medium;
+            }
+            #sub{
+                width: 100px;
+            }
+            #content{
+                border: 2px solid black;
+                width: 300px;
+                margin-left: 500px;
+                height: 400px;
+                background-color: cornflowerblue;
+            }
+            div div{
+                margin-top: 10px;
+                font-size: 30px;
+                text-align: center;
+            }
+        </style>
+        <script>
+            function getter1(){
+                let lat=document.getElementById("latitude").value;
+                let lon=document.getElementById("longitude").value;
+                $.ajax({
+                    url:"http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=669cdef9cdc213ce1f625929e9590060",
+                    method:"GET",
+                    success:function(responseMessage,status,respose){
+                        console.log(respose)
+                        let data=respose.responseJSON;
+                        return data
+                    },
+                    error: function(response){
+                        console.log(response)
+                    }
+                }).then(
+                    function(data){
+                        out(data.weather[0].icon,data.main.temp,data.weather[0].description,data.name,data.sys.country,data.wind.speed)
+                    })
+            }
+            function curr_loc(){
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    console.log( "Geolocation is not supported by this browser.");
+                }
+            };
+            function showPosition(position) {
+                console.log( "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+                document.getElementById("latitude").value=position.coords.latitude;
+                document.getElementById("longitude").value=position.coords.longitude;
+                getter1();
+            };
+            function out(icon,temp,des,city,country,wind){
+                document.getElementById("icon_img").src="http://openweathermap.org/img/wn/"+icon+"@4x.png";
+                document.getElementById("tempvalue").textContent=Math.round(temp-273);
+                document.getElementById("description").innerHTML=des;
+                document.getElementById("windspeed").innerHTML="windspeed "+wind;
+                document.getElementById("loc").innerHTML=city + " "+ country
+            }
+            function change(){
+                value=document.getElementById("tempvalue").textContent;
+                if(document.getElementById("tempunit").textContent=="C"){
+                    document.getElementById("tempvalue").textContent=Math.round((value*(9/5))+32);
+                    document.getElementById("tempunit").textContent="F";
+                }
+                else{    
+                    document.getElementById("tempvalue").textContent=Math.round((value-32)*(5/9));
+                    document.getElementById("tempunit").textContent="C";
+                }            
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="curr_loc()">Get for your current location</button>
+        <br>
+        <input type="text" id="latitude"  value=""  placeholder="latitude details...">
+        <input type="text" id="longitude" value=""   placeholder="longitude details..." >
+        <button type="submit" id="sub" onclick="getter1()">Submit</button>
+        <br>
+        <div id="content">
+            <div><img src="#" id="icon_img"></div>
+            <div id="description"></div>
+            <div id="temp">temp <span id="tempvalue">-</span><span id="tempsymbol">°</span><span id="tempunit" onclick="change()">C</span></div>
+            <div id="windspeed"></div>
+            <div id="loc"></div>
+        </div>
+    </body>
+
+</html>
