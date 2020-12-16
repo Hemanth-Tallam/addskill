@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #inp{
+              width: 500px;
+              height: 30px;
+              margin-left: 350px;
+              margin-top: 50px;
+              margin-bottom: 20px;
+              font-size: medium;
+              padding: 2px;
+            }
+            #but{
+                height: 30px;
+                width: 120px;
+            }
+            #clrbtn{
+                height: 35px;
+                width: 120px;
+                margin-top: 50px;
+                margin-left: 600px;
+            }
+            table{
+                width:630px;
+                margin-left: 350px;
+                margin-top: 10px;
+                border: 1px black solid;
+            }
+            table tr{
+                height: 30px;
+            }
+            button{
+                height: 30px;
+                width:30px;
+                margin-right: 5px;
+            }
+            table tr td{
+                word-break: break-all;
+                font-size: large;
+                line-height: 30px;
+            }
+            table tr{
+                height: 30px;
+            }
+            div{
+                text-align: center;
+                width: 100%;
+            }
+            .done{
+                color: red;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background-color: black;height: 50px; line-height: 50px; font-size: large; color: white; text-align: center; width: 100%;">
+            To-do List
+        </div>
+        <input type="text" id="inp" value="" placeholder="add-item..." >
+        <button type="button" onclick="additem()" id="but">add</button>
+        <br>
+        <div>E-edit D-delete S-solved</div>
+        <br>
+        <table id="tab">
+            <tr>
+                <th style="width: 500px;">List</th>
+                <th>options</th>
+            </tr>    
+        </table>
+        <button type="button" onclick="clearing()" id="clrbtn">Clear</button>
+    </body>
+    <script>
+        var idnos=0
+        document.onload=displayy()
+        function additem(){
+            let a=document.getElementById("inp").value
+            if (a!="" && !(localStorage.getItem(a))){
+                idnos++
+                localStorage.setItem(a,1)
+                let opns=document.createElement("td")
+                let b1= document.createElement("button")
+                b1.innerHTML="S"
+                let b2= document.createElement("button")
+                b2.innerHTML="D"
+                let b3= document.createElement("button")
+                b3.innerHTML="E"
+                opns.append(b1)
+                opns.append(b2)
+                opns.append(b3)
+                let tr1=document.createElement("tr")
+                let td1=document.createElement("td")
+                let tex=document.createTextNode(a)
+                td1.append(tex)
+                tr1.append(td1)
+                tr1.append(opns)
+                document.getElementById("tab").append(tr1)
+                tr1.id="item"+idnos;
+                b1.addEventListener("click",()=>{
+                    let ele=b2.parentElement.parentElement.getAttribute("id");
+                    if (tr1.classList==''){
+                        tr1.classList='done'
+                        localStorage.setItem(a,0)
+                    }
+                    else{
+                        tr1.classList=''
+                        localStorage.setItem(a,1)
+                    }
+                })
+                b2.addEventListener("click",()=>{
+                    let del=b2.parentElement.parentElement.getAttribute("id");
+                    document.getElementById(del).remove();
+                    localStorage.removeItem(a)
+                })
+                b3.addEventListener("click",()=>{
+                    let del=b2.parentElement.parentElement.getAttribute("id");
+                    document.getElementById(del).remove();
+                    localStorage.removeItem(a);
+                    document.getElementById("inp").value=a;
+                })
+            }
+            document.getElementById("inp").value=""   
+            console.log(localStorage)         
+        }
+        function displayy(){
+            let c=Object.keys(localStorage)
+            console.log(c)
+            for (let k=c.length-1;k>-1;k--){
+                idnos++
+                console.log(k)
+                let a=c[k]
+                let opns=document.createElement("td")
+                let b1= document.createElement("button")
+                b1.innerHTML="S"
+                let b2= document.createElement("button")
+                b2.innerHTML="D"
+                let b3= document.createElement("button")
+                b3.innerHTML="E"
+                opns.append(b1)
+                opns.append(b2)
+                opns.append(b3)
+                let tr1=document.createElement("tr")
+                let td1=document.createElement("td")
+                let tex=document.createTextNode(c[k])
+                td1.append(tex)
+                tr1.append(td1)
+                tr1.append(opns)
+                let c1=localStorage.getItem(c[k])
+                if (c1==0){
+                    tr1.classList="done"
+                }
+                document.getElementById("tab").append(tr1)
+                tr1.id="item"+idnos;
+                b1.addEventListener("click",()=>{
+                    let ele=b2.parentElement.parentElement.getAttribute("id");
+                    if (tr1.classList==''){
+                        tr1.classList='done'
+                        localStorage.setItem(a,0)
+                    }
+                    else{
+                        tr1.classList=''
+                        localStorage.setItem(a,1)
+                    }
+                })
+                b2.addEventListener("click",()=>{
+                    let del=b2.parentElement.parentElement.getAttribute("id");
+                    document.getElementById(del).remove();
+                    localStorage.removeItem(a)
+                })
+                b3.addEventListener("click",()=>{
+                    let del=b2.parentElement.parentElement.getAttribute("id");
+                    document.getElementById(del).remove();
+                    localStorage.removeItem(a);
+                    document.getElementById("inp").value=a;
+                })
+            }
+        }
+        function clearing(){
+            localStorage.clear()
+            for(let i=1;i<=idnos;i++){
+                if(document.getElementById("item"+i)){
+                    document.getElementById("item"+i).remove();
+                }
+            }
+        }
+    </script>
+</html>
